@@ -2,6 +2,8 @@ package com.mycompany.databasegitproject.view;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -180,7 +182,15 @@ public class FXMLBase extends AnchorPane {
         
 
         //Zainab
-        
+        buttonFirst.setOnAction((event) -> {
+            try {
+                if (resultSet.first()) {
+                    addText();
+                }
+            } catch (SQLException ex1) {
+               ex1.printStackTrace();
+            }
+        });
         
         //Zainab
         
@@ -188,5 +198,20 @@ public class FXMLBase extends AnchorPane {
         //Zainab
     
     
+    }
+    //Zainab 
+        public void addText() {
+
+        try {
+            textId.setText(resultSet.getString(1));
+            textFirstName.setText(resultSet.getString(2));
+            textMiddleName.setText(resultSet.getString(3));
+            textLastName.setText(resultSet.getString(4));
+            textEmail.setText(resultSet.getString(5));
+            textPhone.setText(resultSet.getString(6));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
