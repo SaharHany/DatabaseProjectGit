@@ -217,7 +217,19 @@ public class FXMLBase extends AnchorPane {
         });
 
         //sahar
-  
+        buttonLast.setOnAction((event) -> {
+
+            try {
+                if (resultSet.last()) {
+                    addText();
+                }
+            } catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
+
+        });
+
+
         
         //Zainab
         buttonFirst.setOnAction((event) -> {
