@@ -1,4 +1,4 @@
-package com.mycompany.databasegitproject;
+package com.mycompany.databasegitproject.model;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,4 +1,4 @@
-package com.mycompany.databasegitproject;
+package com.mycompany.databasegitproject.controller;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
