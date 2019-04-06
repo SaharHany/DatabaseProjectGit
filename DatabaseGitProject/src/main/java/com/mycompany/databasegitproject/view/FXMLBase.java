@@ -2,6 +2,8 @@ package com.mycompany.databasegitproject.view;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -11,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class FXMLBase extends AnchorPane {
 
-    
+
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
@@ -33,13 +35,13 @@ public class FXMLBase extends AnchorPane {
     protected final Button buttonNext;
     protected final Button buttonLast;
 
-    private ResultSet resultSet ;
+    private ResultSet resultSet;
     private boolean insert = false;
 
     public FXMLBase(ResultSet resultSet) {
 
-        this.resultSet = resultSet ;
-        
+        this.resultSet = resultSet;
+
         label = new Label();
         label0 = new Label();
         label1 = new Label();
@@ -161,7 +163,7 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(textLastName);
         getChildren().add(textEmail);
         getChildren().add(textPhone);
-        
+
         getChildren().add(buttonNew);
         getChildren().add(buttonUpdate);
         getChildren().add(buttonDelete);
@@ -169,7 +171,7 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(buttonPrevious);
         getChildren().add(buttonNext);
         getChildren().add(buttonLast);
-        
+
         //sahar
         buttonNew.setOnAction((event) -> {
             try {
@@ -187,20 +189,30 @@ public class FXMLBase extends AnchorPane {
         //sahar
         
         //sahar
+  
         
+        //Zainab
+        buttonFirst.setOnAction((event) -> {
+            try {
+                if (resultSet.first()) {
+                    addText();
+                }
+            } catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
+        });
 
-        //Zainab
-        
         
         //Zainab
-        
+
         
         //Zainab
-    
-    
+
+        
     }
-    
-        public void clear() {
+
+    //sahar
+    public void clear() {
         textId.clear();
         textFirstName.clear();
         textMiddleName.clear();
@@ -209,4 +221,20 @@ public class FXMLBase extends AnchorPane {
         textPhone.clear();
     }
 
+    //Zainab 
+    public void addText() {
+
+        try {
+            textId.setText(resultSet.getString(1));
+            textFirstName.setText(resultSet.getString(2));
+            textMiddleName.setText(resultSet.getString(3));
+            textLastName.setText(resultSet.getString(4));
+            textEmail.setText(resultSet.getString(5));
+            textPhone.setText(resultSet.getString(6));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
 }
