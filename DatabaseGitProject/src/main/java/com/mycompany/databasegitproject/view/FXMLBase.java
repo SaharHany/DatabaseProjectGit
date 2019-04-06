@@ -248,6 +248,28 @@ public class FXMLBase extends AnchorPane {
         
         
         //Zainab
+        buttonUpdate.setOnAction((event) -> {
+            if (insert) {
+
+                try {
+                    resultSet.moveToInsertRow();
+                   updateText();
+                    resultSet.insertRow();
+                    
+                } catch (SQLException ex) {
+                    System.out.println("new");
+                }
+                insert=false;
+
+            } else {
+                try {
+                    resultSet.moveToCurrentRow();
+                    updateText();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         
     }
@@ -272,6 +294,22 @@ public class FXMLBase extends AnchorPane {
             textLastName.setText(resultSet.getString(4));
             textEmail.setText(resultSet.getString(5));
             textPhone.setText(resultSet.getString(6));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+      public void updateText() {
+        try {
+            
+            resultSet.updateString(1, textId.getText());
+            resultSet.updateString(2, textFirstName.getText());
+            resultSet.updateString(3, textMiddleName.getText());
+            resultSet.updateString(4, textLastName.getText());
+            resultSet.updateString(5, textEmail.getText());
+            resultSet.updateString(6, textPhone.getText());
+            if(!insert)
+            resultSet.updateRow();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
