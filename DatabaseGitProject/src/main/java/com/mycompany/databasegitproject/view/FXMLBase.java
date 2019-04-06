@@ -1,5 +1,9 @@
-package com.mycompany.databasegitproject.model;
+package com.mycompany.databasegitproject.view;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -7,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class FXMLBase extends AnchorPane {
 
+    
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
@@ -28,8 +33,13 @@ public class FXMLBase extends AnchorPane {
     protected final Button buttonNext;
     protected final Button buttonLast;
 
-    public FXMLBase() {
+    private ResultSet resultSet ;
+    private boolean insert = false;
 
+    public FXMLBase(ResultSet resultSet) {
+
+        this.resultSet = resultSet ;
+        
         label = new Label();
         label0 = new Label();
         label1 = new Label();
@@ -151,6 +161,7 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(textLastName);
         getChildren().add(textEmail);
         getChildren().add(textPhone);
+        
         getChildren().add(buttonNew);
         getChildren().add(buttonUpdate);
         getChildren().add(buttonDelete);
@@ -158,6 +169,24 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(buttonPrevious);
         getChildren().add(buttonNext);
         getChildren().add(buttonLast);
+        
+        //sahar
 
+        //sahar
+        
+        //sahar
+        
+        //sahar
+        
+
+        //Zainab
+        
+        
+        //Zainab
+        
+        
+        //Zainab
+    
+    
     }
 }
