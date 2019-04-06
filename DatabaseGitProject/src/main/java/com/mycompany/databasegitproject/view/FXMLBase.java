@@ -185,9 +185,37 @@ public class FXMLBase extends AnchorPane {
         });
 
         //sahar
+        buttonDelete.setOnAction((event) -> {
+
+            try {
+                clear();
+                resultSet.deleteRow();
+                resultSet.next();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        });
+
+
         
         //sahar
-        
+        buttonPrevious.setOnAction((event) -> {
+
+            try {
+                if (resultSet.previous()) {
+
+                    clear();
+                    addText();
+
+                }
+            } catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
+
+        });
+
         //sahar
   
         
