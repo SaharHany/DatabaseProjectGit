@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class FXMLBase extends AnchorPane {
 
-    
+
     protected final Label label;
     protected final Label label0;
     protected final Label label1;
@@ -35,13 +35,13 @@ public class FXMLBase extends AnchorPane {
     protected final Button buttonNext;
     protected final Button buttonLast;
 
-    private ResultSet resultSet ;
+    private ResultSet resultSet;
     private boolean insert = false;
 
     public FXMLBase(ResultSet resultSet) {
 
-        this.resultSet = resultSet ;
-        
+        this.resultSet = resultSet;
+
         label = new Label();
         label0 = new Label();
         label1 = new Label();
@@ -163,7 +163,7 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(textLastName);
         getChildren().add(textEmail);
         getChildren().add(textPhone);
-        
+
         getChildren().add(buttonNew);
         getChildren().add(buttonUpdate);
         getChildren().add(buttonDelete);
@@ -171,16 +171,54 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(buttonPrevious);
         getChildren().add(buttonNext);
         getChildren().add(buttonLast);
-        
-        //sahar
 
         //sahar
-        
-        //sahar
-        
-        //sahar
-        
+        buttonNew.setOnAction((event) -> {
+            try {
+                resultSet.moveToInsertRow();
+                clear();
+                insert = true;
 
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        //sahar
+        buttonDelete.setOnAction((event) -> {
+
+            try {
+                clear();
+                resultSet.deleteRow();
+                resultSet.next();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        });
+
+
+        
+        //sahar
+        buttonPrevious.setOnAction((event) -> {
+
+            try {
+                if (resultSet.previous()) {
+
+                    clear();
+                    addText();
+
+                }
+            } catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
+
+        });
+
+        //sahar
+  
+        
         //Zainab
         buttonFirst.setOnAction((event) -> {
             try {
@@ -188,11 +226,13 @@ public class FXMLBase extends AnchorPane {
                     addText();
                 }
             } catch (SQLException ex1) {
-               ex1.printStackTrace();
+                ex1.printStackTrace();
             }
         });
+
         
         //Zainab
+
         buttonNext.setOnAction((event) -> {
             try {
                 if (resultSet.next()) {
@@ -208,11 +248,22 @@ public class FXMLBase extends AnchorPane {
         
         
         //Zainab
-    
-    
+
+        
     }
+
+    //sahar
+    public void clear() {
+        textId.clear();
+        textFirstName.clear();
+        textMiddleName.clear();
+        textLastName.clear();
+        textEmail.clear();
+        textPhone.clear();
+    }
+
     //Zainab 
-        public void addText() {
+    public void addText() {
 
         try {
             textId.setText(resultSet.getString(1));
@@ -226,4 +277,5 @@ public class FXMLBase extends AnchorPane {
             ex.printStackTrace();
         }
     }
+    
 }
