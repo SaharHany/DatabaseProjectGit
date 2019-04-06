@@ -11,7 +11,7 @@ import javax.activation.DataSource;
 
 
 public class Factory {
-    public  static MysqlDataSource getSqlDataSource(){
+   public  static MysqlDataSource getSqlDataSource(){
         Properties properties  = new Properties();
         FileInputStream input = null;
         MysqlDataSource dataSource = null;
