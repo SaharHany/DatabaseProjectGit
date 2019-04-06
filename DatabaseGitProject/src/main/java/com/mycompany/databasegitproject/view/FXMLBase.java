@@ -171,6 +171,16 @@ public class FXMLBase extends AnchorPane {
         getChildren().add(buttonLast);
         
         //sahar
+        buttonNew.setOnAction((event) -> {
+            try {
+                resultSet.moveToInsertRow();
+                clear();
+                insert = true;
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
 
         //sahar
         
@@ -189,4 +199,14 @@ public class FXMLBase extends AnchorPane {
     
     
     }
+    
+        public void clear() {
+        textId.clear();
+        textFirstName.clear();
+        textMiddleName.clear();
+        textLastName.clear();
+        textEmail.clear();
+        textPhone.clear();
+    }
+
 }
